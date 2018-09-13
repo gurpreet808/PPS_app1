@@ -1,0 +1,7 @@
+{
+  "name": "CargaQR",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
