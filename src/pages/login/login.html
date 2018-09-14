@@ -1,0 +1,31 @@
+<ion-content padding>
+  <ion-grid>
+    <ion-row text-center justify-content-center align-items-center>
+      <h1>Datos del usuario</h1>
+    </ion-row>
+    
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <ion-row>
+        <ion-item>
+          <ion-label floating>Correo:</ion-label>
+          <ion-input type="text" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Contraseña:</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row padding>
+        <button ion-button block type="submit" [disabled]="!loginForm.valid">Iniciar sesión</button>
+      </ion-row>
+    </form>
+    
+    <ion-row padding text-center justify-content-center align-items-center style="background-color: #bfbfbf;">
+      <h4 ion-col col-12 padding>Usuarios de prueba</h4>
+      <ion-col text-center no-padding *ngFor="let item of usuariosTest; let i=index">
+        <button ion-button color="dark" round (click)="elegirTest(i)">{{ item.email }}</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
