@@ -27,3 +27,38 @@
 .grid{
     background-color: rgba(255, 255, 255, 1);
 }
+
+#custom-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100000;
+    width:100%;
+    background-color: rgb(184, 218, 189);
+}
+  
+.loading-md .loading-wrapper {
+    border-radius: 0px;
+    max-width: 280px;
+    max-height: 90%;
+    /* color: rgba(0, 0, 0, 0.5); */
+    background: rgba(0, 0, 0, 0);
+    -webkit-box-shadow: 0 16px 20px rgba(0, 0, 0, 0);
+    box-shadow: 0 16px 20px rgba(0, 0, 0, 0);
+    padding: 0;
+}
+
+.animacion {
+    -webkit-animation: rotation 2s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+    from {
+            -webkit-transform: rotate(0deg);
+    }
+    to {
+            -webkit-transform: rotate(359deg);
+    }
+}

@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { CargasPage } from '../pages/cargas/cargas';
+import { LoadingProvider } from '../providers/loading/loading';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,19 +13,40 @@ import { CargasPage } from '../pages/cargas/cargas';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
+  splash: boolean = true;
   rootPage: any = "LoginPage";
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
-    this.initializeApp();
+  constructor(
+    public platform: Platform, 
+    public statusBar: StatusBar, 
+    public splashScreen: SplashScreen,
+    private busyLoader: LoadingProvider) {
 
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Cargas', component: CargasPage }
-    ];
+      this.busyLoader.showBusyLoader();
 
+      this.initializeApp();
+
+      /* this.auth.afAuth.authState
+      .subscribe( 
+        user => {
+          if (user) {
+            this.rootPage = 'HomePage';
+          } else {
+            this.rootPage = 'LoginPage';
+          }
+        },
+        () => {
+          this.rootPage = 'LoginPage';
+        }
+      ); */
+
+        // used for an example of ngFor and navigation
+      this.pages = [
+        { title: 'Home', component: HomePage },
+        { title: 'Cargas', component: CargasPage }
+      ];
   }
 
   initializeApp() {
@@ -33,6 +55,10 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      setTimeout(() => {
+        this.splash = false
+        this.busyLoader.dismissBusyLoader();
+      }, 3000);
     });
   }
 
