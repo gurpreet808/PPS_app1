@@ -1,31 +1,65 @@
-<!-- <ion-content padding>
-  <ion-grid>
-    <ion-row text-center justify-content-center align-items-center>
-      <h1>Datos del usuario</h1>
-    </ion-row>
-    
-    <form [formGroup]="registerForm" (ngSubmit)="login()">
-      <ion-row>
-        <ion-item>
-          <ion-label floating>Correo:</ion-label>
-          <ion-input type="text" formControlName="email"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label floating>Contraseña:</ion-label>
-          <ion-input type="password" formControlName="password"></ion-input>
-        </ion-item>
-      </ion-row>
-      <ion-row padding>
-        <button ion-button block type="submit" [disabled]="!registerForm.valid">Iniciar sesión</button>
-      </ion-row>
-    </form>
-    
-    <ion-row padding text-center justify-content-center align-items-center style="background-color: #bfbfbf;">
-      <h4 ion-col col-12 padding>Usuarios de prueba</h4>
-      <ion-col text-center no-padding *ngFor="let item of usuariosTest; let i=index">
-        <button ion-button color="dark" round (click)="elegirTest(i)">{{ item.email }}</button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+<!--
+  Generated template for the RegistrarUsuarioPage page.
 
-</ion-content> -->
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Registrar usuario</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-grid>
+      <ion-row text-center justify-content-center align-items-center>
+        <h1>Datos del usuario</h1>
+      </ion-row>
+      
+      <form [formGroup]="registerForm" (ngSubmit)="login()">
+        <ion-row>
+  
+          <ion-item>
+            <ion-label floating>Correo:</ion-label>
+            <ion-input type="text" formControlName="email"></ion-input>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label floating>Contraseña:</ion-label>
+            <ion-input type="password" formControlName="password"></ion-input>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label floating>Confirmar contraseña:</ion-label>
+            <ion-input type="password" formControlName="password2"></ion-input>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label floating>Perfil:</ion-label>
+            <ion-select formControlName="perfil">
+              <ion-option value="admin">Administrador</ion-option>
+              <ion-option value="invitado">Invitado</ion-option>
+              <ion-option value="usuario">Usuario</ion-option>
+              <ion-option value="tester">Tester</ion-option>
+            </ion-select>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label floating>Sexo:</ion-label>
+            <ion-select formControlName="sexo">
+              <ion-option value="femenino">Femenino</ion-option>
+              <ion-option value="masculino">Masculino</ion-option>
+            </ion-select>
+          </ion-item>
+  
+        </ion-row>
+        <ion-row padding>
+          <button ion-button block type="submit" [disabled]="!registerForm.valid">Registrarme</button>
+        </ion-row>
+      </form>
+    </ion-grid>
+  
+  </ion-content>

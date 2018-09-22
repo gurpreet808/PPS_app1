@@ -60,6 +60,10 @@ export class LoginPage {
     });
   }
 
+  registrarme(){
+    this.navCtrl.push("RegistrarUsuarioPage");
+  }
+
   mostrarMensaje(text:string) {
     const toast = this.toastCtrl.create({
       message: text,
