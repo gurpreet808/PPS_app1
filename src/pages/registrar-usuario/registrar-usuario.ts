@@ -30,20 +30,13 @@ export class RegistrarUsuarioPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
-  login(){
+  registrar(){
+    delete this.registerForm.value.password2;
     console.log(this.registerForm.value);
-    this.auth.logueoEmail(this.registerForm.value['email'], this.registerForm.value['password'])
-      .then( allowed => {
-        console.log(allowed);
-        this.navCtrl.pop;
-    }).catch( error => {
-      if (error["code"] == "auth/user-not-found") {
-        this.mostrarMensaje('¡ERROR! No se pudo encontrar un usuario con ese mail');  
-      } else {
-        this.mostrarMensaje('Error en las credenciales');
-      }
-      console.log(error);
-    });
+    if(this.auth.registroAF(this.registerForm.value.email, this.registerForm.value.password)){
+      this.mostrarMensaje("BIEN! Se registro correctamente. Por favor inicie sesión");
+      this.navCtrl.pop();
+    }
   }
 
   mostrarMensaje(text:string) {
